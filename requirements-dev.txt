@@ -1,0 +1,15 @@
+# Development dependencies
+# Include all production requirements
+-r requirements.txt
+
+# Testing and Coverage
+pytest==7.4.0
+pytest-cov==4.1.0
+
+# Code Quality
+flake8==6.1.0
+black==23.10.1
+
+# Development Tools
+python-dotenv==1.0.0
+ipython==8.16.0

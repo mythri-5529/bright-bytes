@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Bright Bytes</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <h2>Admin Panel</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-section="dashboard">
+                    <span class="icon">📊</span> Dashboard
+                </a>
+                <a href="#" class="nav-item" data-section="users">
+                    <span class="icon">👥</span> Users
+                </a>
+                <a href="#" class="nav-item" data-section="items">
+                    <span class="icon">📦</span> Items
+                </a>
+                <a href="#" class="nav-item" data-section="files">
+                    <span class="icon">📁</span> Files
+                </a>
+                <a href="#" class="nav-item" data-section="comments">
+                    <span class="icon">💬</span> Comments
+                </a>
+                <a href="#" class="nav-item" data-section="settings">
+                    <span class="icon">⚙️</span> Settings
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <button id="logoutBtn" class="btn btn-danger btn-small">Logout</button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="admin-section active">
+                <h1>Dashboard</h1>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Total Users</h3>
+                        <p id="totalUsers" class="stat-value">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Total Items</h3>
+                        <p id="totalItems" class="stat-value">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Total Comments</h3>
+                        <p id="totalComments" class="stat-value">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Total Files</h3>
+                        <p id="totalFiles" class="stat-value">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Active Users</h3>
+                        <p id="activeUsers" class="stat-value">0</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Users Section -->
+            <section id="users" class="admin-section">
+                <h1>User Management</h1>
+                <div id="usersList" class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>Admin</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usersTable">
+                            <tr>
+                                <td colspan="5" style="text-align: center; padding: 20px;">Loading...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Items Section -->
+            <section id="items" class="admin-section">
+                <h1>Items Management</h1>
+                <div id="itemsList" class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Owner</th>
+                                <th>Category</th>
+                                <th>Status</th>
+                                <th>Views</th>
+                                <th>Created</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="itemsTable">
+                            <tr>
+                                <td colspan="7" style="text-align: center; padding: 20px;">Loading...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Files Section -->
+            <section id="files" class="admin-section">
+                <h1>Files Management</h1>
+                <div id="filesList" class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Filename</th>
+                                <th>Uploader</th>
+                                <th>Size</th>
+                                <th>Type</th>
+                                <th>Uploaded</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="filesTable">
+                            <tr>
+                                <td colspan="6" style="text-align: center; padding: 20px;">Loading...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Comments Section -->
+            <section id="comments" class="admin-section">
+                <h1>Recent Comments</h1>
+                <div id="commentsList">
+                    <p class="placeholder">Comments list coming soon</p>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings" class="admin-section">
+                <h1>Settings</h1>
+                <div class="settings-container">
+                    <p>Settings panel coming soon</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/socket.io.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>
