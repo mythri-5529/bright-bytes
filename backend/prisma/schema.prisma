@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id        String     @id @default(uuid())
+  username  String     @unique
+  email     String     @unique
+  trustScore Int       @default(50)
+  incidents Incident[]
+  sosEvents SosEvent[]
+  createdAt DateTime   @default(now())
+}
+
+model Incident {
+  id          String   @id @default(uuid())
+  type        String   // e.g., 'harassment', 'poor-lighting', 'unsafe-group'
+  description String?
+  latitude    Float
+  longitude   Float
+  severity    Int      // 1-10
+  upvotes     Int      @default(0)
+  downvotes   Int      @default(0)
+  createdAt   DateTime @default(now())
+  author      User?    @relation(fields: [authorId], references: [id])
+  authorId    String?
+}
+
+model SosEvent {
+  id        String   @id @default(uuid())
+  latitude  Float
+  longitude Float
+  status    String   @default("active") // 'active', 'resolved'
+  createdAt DateTime @default(now())
+  user      User?    @relation(fields: [userId], references: [id])
+  userId    String?
+}
