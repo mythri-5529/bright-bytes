@@ -5,6 +5,7 @@ from flask_socketio import SocketIO, emit, join_room, leave_room
 from flask_mail import Mail, Message
 from dotenv import load_dotenv
 from werkzeug.utils import secure_filename
+from sqlalchemy import text
 import os
 import uuid
 from datetime import datetime
@@ -423,10 +424,18 @@ def index():
 @app.route('/api/health', methods=['GET'])
 def health():
     """Health check endpoint"""
+    try:
+        # Test database connection
+        with db.engine.connect() as connection:
+            connection.execute(db.text("SELECT 1"))
+        db_status = 'connected'
+    except Exception:
+        db_status = 'disconnected'
+    
     return jsonify({
         'status': 'healthy',
         'message': 'Bright Bytes API is running',
-        'database': 'connected' if db.engine.execute("SELECT 1") else 'disconnected'
+        'database': db_status
     }), 200
 
 
